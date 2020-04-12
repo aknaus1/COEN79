@@ -11,7 +11,7 @@ using namespace std;
  * Returns true if character is alphanumeric, otherwise returns false.
  */
 bool is_alphanumeric(char c) {
-        if((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9')) { //Check if character is alphanumeric 
+        if((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9')) { //Check if character is alphanumeric
                 return true;
         }
         return false;
@@ -32,9 +32,9 @@ void count(char input[100]) {
                         nonalpha++; //Increment non-alphanumeric character count
                 i++;
         }
-        cout << "You entered: " << input << endl;
-        cout << "There are " << alpha << " alphanumeric characters." << endl;
-        cout << "There are " << nonalpha << " non-alphanumeric characters." << endl;
+        cout << "\"" << input << "\"" << " has " << alpha;
+        cout << " alphanumeric characters and " << nonalpha;
+        cout << " non-alphanumeric characters." << endl;
         return;
 }
 
@@ -46,7 +46,7 @@ void count(char input[100]) {
 int main() {
         int i = 0, alpha = 0, nonalpha = 0;
         char input[100];
-        cout << "What is your phrase?: ";
+        cout << "Please Type Something: ";
         cin.get(input, 100);
         count(input); //Counts and prints the amount of alphanumeric and non-alphanumeric characters
         return 0;

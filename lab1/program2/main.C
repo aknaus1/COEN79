@@ -37,15 +37,15 @@ void print_backwords(char input[10]) {
  */
 void print(char input[10]) {
         int i;
-        int k = 1, n = 5;
+        int k = 1, n = 10;
         for(i = 0; i < 5; i++) {
                 print_spaces(k); //Prints foward spaces
                 cout << input; //Prints input foward
                 print_spaces(n); //Prints middle spaces
                 print_backwords(input); //Prints input backwards
                 cout << endl; //End line
-                k += 1; //Increment foward spaces
-                n += 1; //Increment middle spaces
+                k += 2; //Increment foward spaces
+                n += 2; //Increment middle spaces
         }
 }
 

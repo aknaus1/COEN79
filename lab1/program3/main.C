@@ -45,7 +45,7 @@ void print(string text) {
  * Gets single text file input and prints contents of file according to example on camino.
  */
 int main(int argc, char *argv[]) {
-    if(argc != 2){ //if there is more than one file or none at all terminate with error                
+    if(argc != 2){ //if there is more than one file or none at all terminate with error
         cout << "Invalid number of file(s)!" << endl;
         exit(1);
     }
