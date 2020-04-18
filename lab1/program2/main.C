@@ -31,7 +31,7 @@ void print_backwords(char input[10]) {
 
 /*
  * Function: print
- * Parameters: Charter input[10]
+ * Parameters: Character input[10]
  * Return: void
  * Prints array in pattern as demonstrated on Camino
  */
@@ -50,6 +50,23 @@ void print(char input[10]) {
 }
 
 /*
+ * Function: check
+ * Parameters: Character input[10]
+ * Return: boolean
+ * Checks if array is consisting of only numerical digits
+ */
+bool check(char input[10]){
+  int i;
+  for(i = 0; i < 10; i++){
+    if(input[i] >= '0' && input[i] <= '9'){
+    } else {
+      return true; //If not a digit return
+    }
+  }
+  return false;
+}
+
+/*
  * Function: main
  * Prompts user for string of 10 digits.
  * Prints strings of digits as demonstrated on Camino.
@@ -58,6 +75,10 @@ int main() {
         char input[11];
         cout << "Please type a string of 10 digits (0 to 9) with no spaces: ";
         cin.get(input, 11);
+        if(check(input)){ //If input includes non digits exit.
+          cout << "Error: Invalid Input" << endl;
+          return 0;
+        }
         print(input); //Prints input as demonstrated on Camino
         return 0;
 }
