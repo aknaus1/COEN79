@@ -61,28 +61,32 @@ namespace coen79_lab2{
   }
 
   statistician operator +(const statistician& s1, const statistician& s2){
-    statistician s;
-    s.len = s1.len + s2.len;
-    s.total = s1.total + s2.total;
-    if(s1.largest >= s2.largest){
-      s.largest = s1.largest;
+    int len;
+    double total, largest, smallest;
+    len = s1.length() + s2.length();
+    total = s1.sum() + s2.sum();
+    if(s1.maximum() >= s2.maximum()){
+      largest = s1.maximum();
     } else {
-      s.largest = s2.largest;
+      largest = s2.maximum();
     }
-    if(s1.smallest <= s2.smallest){
-      s.smallest = s1.smallest;
+    if(s1.minimum() <= s2.minimum()){
+      smallest = s1.minimum();
     } else {
-      s.smallest = s2.smallest;
+      smallest = s2.minimum();
     }
+    statistician s(len, total, largest, smallest);
     return s;
   }
 
   statistician operator *(double scale, const statistician& s){
-    statistician c;
-    c.len = s.len;
-    c.total = s.total * scale;
-    c.largest = s.largest * scale;
-    c.smallest = s.smallest * scale;
+    int len;
+    double total, largest, smallest;
+    len = s.length();
+    total = s.sum() * scale;
+    largest = s.maximum() * scale;
+    smallest = s.minimum() * scale;
+    statistician c(len, total, largest, smallest);
     return c;
   }
 
@@ -93,42 +97,4 @@ namespace coen79_lab2{
             s1.maximum()==s2.maximum() &&
             s1.minimum()==s2.minimum());
   }
-}
-
-void printStatisticianInfo(statistician & s) {
-    cout << "Sum: " << s.sum() << endl;
-    cout << "Mean: " << s.mean() << endl;
-    cout << "Smallest: " << s.minimum() << endl;
-    cout << "Largest: " << s.maximum() << endl;
-}
-
-int main() {
-  statistician s1, s2;
-  s1.next(1.1);
-  s1.next(-2.4);
-  s1.next(0.8);
-  s2 = s1;
-  cout << "S1:" << endl;
-  printStatisticianInfo(s1);
-  cout << "S2:" << endl;
-  printStatisticianInfo(s2);
-  s1 = 2.0 * s1;
-  cout << "2.0 * S1:" << endl;
-  printStatisticianInfo(s1);
-  s1 = s1 + s2;
-  cout << "S1 + S2:" << endl;
-  printStatisticianInfo(s1);
-  if(s1==s2){
-    cout << "S1 == S2" << endl;
-  }
-  s1.reset();
-  cout << "S1 reset:" << endl;
-  printStatisticianInfo(s1);
-  s1 = s2;
-  if(s1==s2){
-    cout << "S1 == S2" << endl;
-  }
-  cout << "S2:" << endl;
-  printStatisticianInfo(s2);
-  return 0;
 }

@@ -16,7 +16,7 @@ namespace coen79_lab2 {
         increment = inc;
         modulus = mod;
       }
-      int next(); //output next number in random number sequence
+      int next(); //output next number in random number sequence;
       void set_seed(int n); //set seed used in random number generator
   };
 }
