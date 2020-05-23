@@ -65,6 +65,10 @@ namespace coen79_lab6
       precursor = head_ptr;
       cursor = head_ptr;
     }
+    //     Postcondition: The precursor and cursor are adjusted such that the first
+    //     item in the sequence becomes the current item (but if the sequence is
+    //     empty, then there is no current item).
+
     void sequence :: end() {
       cursor = tail_ptr;
       if(head_ptr == tail_ptr) {
@@ -76,6 +80,9 @@ namespace coen79_lab6
         }
       }
     }
+    //     Postcondition: The precursor and cursor are adjusted such that the last
+    //     item in the sequence becomes the current item (but if the sequence is
+    //     empty, then there is no current item).
 
     void sequence :: advance( ) {
       assert(is_item());
@@ -86,6 +93,10 @@ namespace coen79_lab6
         cursor = cursor->link();
       }
     }
+    //     Precondition: is_item returns true.
+    //     Postcondition: If the current item was already the last item in the
+    //     sequence, then there is no longer any current item. Otherwise, the new
+    //     current item is the item immediately after the original current item.
 
     void sequence :: insert(const value_type& entry) {
       if(head_ptr == NULL) {
@@ -108,6 +119,11 @@ namespace coen79_lab6
       }
       many_nodes++;
     }
+    //     Postcondition: A new copy of entry has been inserted in the sequence
+    //     before the current item. If there was no current item, then the new entry
+    //     has been inserted at the front of the sequence. In either case, the newly
+    //     inserted item is now the current item of the sequence.
+
     void sequence :: attach(const value_type& entry) {
       if(head_ptr == NULL) {
         list_head_insert(head_ptr, entry);
@@ -141,6 +157,10 @@ namespace coen79_lab6
       }
       many_nodes++;
     }
+    //     Postcondition: A new copy of entry has been inserted in the sequence after
+    //     the current item. If there was no current item, then the new entry has
+    //     been attached to the end of the sequence. In either case, the newly
+    //     inserted item is now the current item of the sequence.
 
     void sequence :: operator =(const sequence& source) {
       if(this == &source) {
@@ -194,11 +214,15 @@ namespace coen79_lab6
       }
       many_nodes--;
     }
+    //     Precondition: is_item returns true.
+    //     Postcondition: The current item has been removed from the sequence, and
+    //     the item after this (if there is one) is now the new current item.
 
     // CONSTANT MEMBER FUNCTIONS
     sequence :: size_type sequence :: size( ) const {
       return many_nodes;
     }
+    //     Postcondition: The return value is the number of items in the sequence.
 
     bool sequence :: is_item( ) const {
       if(cursor == NULL) {
@@ -207,8 +231,15 @@ namespace coen79_lab6
         return true;
       }
     }
+    //     Postcondition: A true return value indicates that there is a valid
+    //     "current" item that may be retrieved by activating the current
+    //     member function (listed below). A false return value indicates that
+    //     there is no valid current item.
+
     sequence :: value_type sequence :: current( ) const {
       assert(is_item());
       return cursor->data();
     }
+    //     Precondition: is_item( ) returns true.
+    //     Postcondition: The item returned is the current item in the sequence.
 }
