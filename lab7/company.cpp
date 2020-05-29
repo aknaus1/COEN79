@@ -91,9 +91,7 @@ namespace coen79_lab7
         }
 
         if (head_ptr == NULL) {
-            head_ptr->setName(product_name);
-            head_ptr->setPrice(price);
-            tail_ptr = head_ptr;
+            list_init(head_ptr, tail_ptr, product_name, price);
         }
         else {
             list_tail_insert(tail_ptr, product_name, price);

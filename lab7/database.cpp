@@ -102,7 +102,7 @@ namespace coen79_lab7
             return false;
         }
 
-        if(used_slots + 1 >= aloc_slots) {
+        if(used_slots == aloc_slots) {
           reserve(aloc_slots + 1);
         }
         company_array[used_slots] = company(entry);
@@ -119,16 +119,13 @@ namespace coen79_lab7
 
         size_type company_index = search_company(company);
 
-        bool notFound = (company_index == COMPANY_NOT_FOUND);
-
-        if (notFound) {
-            insert_company(company);
-            company_index = 0;
+        if (company_index == COMPANY_NOT_FOUND) {
+            return false;
         }
 
         company_array[company_index].insert(product_name, price);
 
-        return notFound;
+        return true;
     }
     //      Precondition: company_name and product_name are non-empty strings
     //      Postcondition: A new product is added to the list pertaining to the company

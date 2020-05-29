@@ -49,8 +49,9 @@ namespace coen79_lab7
 
     void list_tail_insert(node*& tail, const std::string &newName, const float &newPrice) {
       assert(tail != NULL && newName.length() > 0);
-      node* added = new node(newName, newPrice, NULL);
-      tail->setLink(added);
+      node* newNode = new node(newName, newPrice, NULL);
+      tail->setLink(newNode);
+      tail = newNode;
     }
     //      Precondition: tail_ptr is the tail pointer of a non-empty linked list,
     //      newName is a non_empty string
